@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Forgot Password Community</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p th:text="#{email.confirm-forgot-pass-user.content(${dataMail.currentPass}, ${dataMail.uri})}">Your current password is {0} - Click to here to change password: {1}</p>
+</body>
+</html>

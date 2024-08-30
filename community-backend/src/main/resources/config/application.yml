@@ -1,0 +1,83 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: community
+  profiles:
+    active: prod
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate.format_sql: true
+      hibernate.jdbc.time_zone: UTC
+      hibernate.timezone.default_storage: NORMALIZE
+      hibernate.type.preferred_instant_jdbc_type: TIMESTAMP
+      hibernate.id.new_generator_mappings: true
+      hibernate.connection.provider_disables_autocommit: true
+      hibernate.cache.use_second_level_cache: false
+      hibernate.cache.use_query_cache: false
+      hibernate.generate_statistics: false
+      # modify batch size as necessary
+      hibernate.jdbc.batch_size: 25
+      hibernate.order_inserts: true
+      hibernate.order_updates: true
+      hibernate.query.fail_on_pagination_over_collection_fetch: true
+      hibernate.query.in_clause_parameter_padding: true
+      hibernate.globally_quoted_identifiers: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+  messages:
+    basename: i18n/messages
+  task:
+    execution:
+      thread-name-prefix: easybase-task-
+      pool:
+        core-size: 2
+        max-size: 50
+        queue-capacity: 10000
+    scheduling:
+      thread-name-prefix: community-scheduling-
+      pool:
+        size: 2
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+  thymeleaf:
+    enabled: off
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: hieu.shsoftvina@gmail.com
+    password: dwzr mgmj zecx tewe
+    protocol: smtp
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
+      ssl.trust: smtp.gmail.com
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            redirectUri: http://115.79.212.152.nip.io:3000/login/oauth2/code/google
+            clientId: 1097723833026-v9sv4mcugr1g3n0u7tj8g4s6k26trrjm.apps.googleusercontent.com
+            clientSecret: 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
+            scope:
+              - email
+          github:
+            redirectUri: http://115.79.212.152.nip.io:3000/login/oauth2/code/github
+            clientId: 89db741afe04edfa8fbd
+            clientSecret: 34ec16332794bbd24e8d93b555b3eaeb78e57763
+            scope:
+              - read:user
+              - user:email
+          facebook:
+            appId: 1504958380445942
+
+community:
+  mail:
+    from: community@localhost

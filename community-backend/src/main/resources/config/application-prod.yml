@@ -1,0 +1,37 @@
+logging:
+  level:
+    ROOT: DEBUG
+    org.hibernate.SQL: DEBUG
+    com.shsoftvina.community: DEBUG
+    org.springframework.web: DEBUG
+  file:
+    name: community.log
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://192.168.1.250:3306/community_backend
+    username: community
+    password: community
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+
+community:
+  security:
+    authentication:
+      jwt:
+        base64-secret: OTUwMDVmZDA0ZTZhMzgyZmQ1MzE2NWUwODlmYjYwNjg3YWZjZGEwNzNlMDFhNzdlZDU4YmFiZDM0YjY2Nzg0ZWY2NDhjNTE3YjgwNTA0YTZhYTFlZjc4NDkyOWNmMDE4ZjdiYmQwMTQ2NTE5ZTk5ODc1ODkwYjdhY2Q5M2E0OTc=
+        token-validity-in-seconds: 900
+        refresh-token-validity-in-seconds: 86400
+  server:
+    base-url: http://115.79.212.152
+
+application:
+  path:
+    upload-dir: /home/groupware/was/community/upload/
